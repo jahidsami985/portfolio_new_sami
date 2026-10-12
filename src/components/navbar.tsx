@@ -60,7 +60,7 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Navigation - macOS style */}
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-1">
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -79,7 +79,7 @@ export function Navbar() {
 
           {/* Right Side */}
           <div className="flex items-center gap-2">
-            <StatusBadge variant="success" showPing className="hidden sm:flex text-xs py-1" />
+            <StatusBadge variant="success" showPing className="hidden lg:flex text-xs py-1" />
             
             {isAuthenticated ? (
               <Button
@@ -109,7 +109,7 @@ export function Navbar() {
                   variant="outline"
                   size="sm"
                   asChild
-                  className="rounded-full hidden sm:flex"
+                  className="rounded-full hidden lg:flex"
                 >
                   <Link href="/login">Admin</Link>
                 </Button>
@@ -120,7 +120,7 @@ export function Navbar() {
             <Button
               variant="ghost"
               size="icon"
-              className="md:hidden w-8 h-8"
+              className="lg:hidden w-8 h-8"
               onClick={() => setIsOpen(!isOpen)}
             >
               {isOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
@@ -130,7 +130,7 @@ export function Navbar() {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden mt-2 pb-2 animate-in slide-in-from-top-2">
+          <div className="lg:hidden mt-2 pb-2 animate-in slide-in-from-top-2">
             <div className="flex flex-col gap-1 bg-background/95 backdrop-blur-lg rounded-xl p-3 border border-border">
               {navItems.map((item) => (
                 <Link

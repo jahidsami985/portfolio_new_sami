@@ -1,15 +1,16 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/theme-provider";
 import { AntigravityCanvas, AntigravityStyles } from "@/components/antigravity-background";
 import { AuthProvider } from "@/hooks/use-auth";
+import { portfolioProfile, skillCategories } from "@/lib/portfolio-data";
 
 export const metadata: Metadata = {
-  title: "Jahid Uddin Sami | Full Stack Developer",
-  description: "Full Stack Web Developer skilled in HTML, CSS, Tailwind CSS, JavaScript, Python, Django, MySQL and Git. Building responsive frontend interfaces and secure backend systems.",
-  keywords: ["Full Stack Developer", "Web Developer", "Python", "Django", "JavaScript", "React", "Next.js", "Tailwind CSS", "Portfolio"],
-  authors: [{ name: "Jahid Uddin Sami" }],
+  title: `${portfolioProfile.name} | ${portfolioProfile.title}`,
+  description: portfolioProfile.intro,
+  keywords: [portfolioProfile.title, ...skillCategories.flatMap((category) => category.skills), "Portfolio"],
+  authors: [{ name: portfolioProfile.name }],
   icons: {
     icon: [
       { url: "/logo.png", sizes: "32x32" },
@@ -25,15 +26,20 @@ export const metadata: Metadata = {
     }
   },
   openGraph: {
-    title: "MD Jahid Uddin Sami | Full Stack Developer",
-    description: "Full Stack Web Developer skilled in Python, Django, JavaScript, and modern web technologies.",
+    title: `${portfolioProfile.name} | ${portfolioProfile.title}`,
+    description: portfolioProfile.intro,
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "MD Jahid Uddin Sami | Full Stack Developer",
-    description: "Full Stack Web Developer skilled in Python, Django, JavaScript, and modern web technologies.",
+    title: `${portfolioProfile.name} | ${portfolioProfile.title}`,
+    description: portfolioProfile.intro,
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({

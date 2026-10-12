@@ -1,5 +1,18 @@
 import { NextResponse } from 'next/server'
 import { db } from '@/lib/db'
+import { portfolioProfile } from '@/lib/portfolio-data'
+
+const defaultProfileData = {
+  name: portfolioProfile.name,
+  title: portfolioProfile.title,
+  bio: portfolioProfile.bio,
+  email: portfolioProfile.email,
+  location: portfolioProfile.location,
+  avatar: portfolioProfile.avatar,
+  github: portfolioProfile.github,
+  linkedin: portfolioProfile.linkedin,
+  available: true,
+}
 
 export async function GET() {
   try {
@@ -8,17 +21,7 @@ export async function GET() {
     // If no profile exists, create a default one
     if (!profile) {
       profile = await db.profile.create({
-        data: {
-          name: 'MD Jahid Uddin Sami',
-          title: 'Full Stack Developer',
-          bio: 'Full Stack Developer specializing in building exceptional web applications with modern technologies.',
-          email: 'jahidsami@example.com',
-          location: 'Bangladesh',
-          avatar: '/profile.png',
-          github: 'https://github.com',
-          linkedin: 'https://linkedin.com',
-          available: true,
-        },
+        data: defaultProfileData,
       })
     }
     
@@ -54,15 +57,15 @@ export async function PUT(request: Request) {
     } else {
       profile = await db.profile.create({
         data: {
-          name: name || 'MD Jahid Uddin Sami',
-          title: title || 'Full Stack Developer',
-          bio: bio || '',
-          email: email || 'jahidsami@example.com',
-          location: location || 'Bangladesh',
-          avatar: avatar || '/profile.png',
-          github: github || '',
-          linkedin: linkedin || '',
-          available: available ?? true,
+          name: name || defaultProfileData.name,
+          title: title || defaultProfileData.title,
+          bio: bio || defaultProfileData.bio,
+          email: email || defaultProfileData.email,
+          location: location || defaultProfileData.location,
+          avatar: avatar || defaultProfileData.avatar,
+          github: github || defaultProfileData.github,
+          linkedin: linkedin || defaultProfileData.linkedin,
+          available: available ?? defaultProfileData.available,
         },
       })
     }
