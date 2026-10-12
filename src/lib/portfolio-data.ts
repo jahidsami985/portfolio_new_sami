@@ -30,7 +30,7 @@ export interface PortfolioProject {
   technologies: readonly string[]
   description: string
   features: readonly string[]
-  image: string
+  image: string | null
   githubUrl: ProjectLink
   liveUrl: ProjectLink
 }
@@ -72,7 +72,7 @@ export const portfolioProfile: PortfolioProfile = {
 }
 
 export const heroStats = [
-  { label: 'Projects', value: '2' },
+  { label: 'Projects', value: '3' },
   { label: 'Web Experience', value: '2023-2026' },
   { label: 'Focus', value: 'Frontend' },
 ]
@@ -137,6 +137,23 @@ export const portfolioProjects: readonly PortfolioProject[] = [
     image: '/project-sami-tea-stall.png',
     githubUrl: 'https://github.com/jahidsami985/sami-tea-stall-project',
     liveUrl: 'https://sami-tea-stall-project.vercel.app/',
+  },
+  {
+    id: 'portfolio-new-sami',
+    title: 'portfolio_new_sami',
+    technologies: ['TypeScript', 'React', 'Next.js', 'Tailwind CSS', 'Prisma', 'SQLite'],
+    description:
+      'My personal portfolio website showcasing my projects, technical skills and experience, with responsive layouts and a contact form.',
+    features: [
+      'Projects, skills and experience pages',
+      'Dark and light themes',
+      'Animated canvas background',
+      'Contact form with database storage',
+      'Admin dashboard and resume download',
+    ],
+    image: null,
+    githubUrl: 'https://github.com/jahidsami985/portfolio_new_sami',
+    liveUrl: '/',
   },
 ]
 

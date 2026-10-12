@@ -53,20 +53,21 @@ export default function ProjectsPage() {
 function ProjectCard({ project }: { project: PortfolioProject }) {
   return (
     <Card className="group overflow-hidden hover:shadow-lg transition-all h-full flex flex-col">
-      {/* Image */}
-      <div className="aspect-video relative overflow-hidden bg-secondary">
-        <Image
-          src={project.image}
-          alt={project.title}
-          fill
-          className="object-contain transition-transform duration-300 group-hover:scale-105"
-          sizes="(max-width: 640px) 100vw, 50vw"
-        />
-        <div className="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
-          <ProjectButton link={project.githubUrl} label="Code" icon="github" compact />
-          <ProjectButton link={project.liveUrl} label="Live" icon="live" compact />
+      {project.image && (
+        <div className="aspect-video relative overflow-hidden bg-secondary">
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            className="object-contain transition-transform duration-300 group-hover:scale-105"
+            sizes="(max-width: 640px) 100vw, 50vw"
+          />
+          <div className="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+            <ProjectButton link={project.githubUrl} label="Code" icon="github" compact />
+            <ProjectButton link={project.liveUrl} label="Live" icon="live" compact />
+          </div>
         </div>
-      </div>
+      )}
 
       <CardContent className="p-4 flex flex-col flex-1">
         <h3 className="font-semibold mb-2 break-words">{project.title}</h3>
